@@ -17,7 +17,7 @@ Terina Ishaqzai — campus_life corpus
 
 ## What This Does
 
-<!-- Three or four sentences. Milestone 5. -->
+This is a RAG system built on the `campus_life` corpus — 88 short posts covering housing, courses, dining, and campus admin topics that students actually ask each other about. It answers specific questions like "is the housing lottery random?" or "how many unit tests are there in BIOL 160?" by retrieving the most relevant chunks from those posts and generating an answer grounded only in what it finds, always naming its source. If a question falls outside what the corpus covers — like general trivia or unrelated how-to questions — a relevance gate catches it and the system says so instead of guessing.
 
 ## Chunking Strategy
 
@@ -83,7 +83,7 @@ The bad: known damp problem on the ground floor; two rooms were taken offline in
 The housing lottery is not entirely random; rising sophomores get a number drawn at random, but juniors and seniors are ordered by accumulated credit hours first, using random selection only as a tie-breaker (admin_housing_lottery.txt).
 **My relevance cutoff:** 0.6 (the starter's default). I ran all 5 of my test questions and all 5 OUT_OF_SCOPE questions and found a large, clean gap: my in-scope questions topped out at 0.363, and my out-of-scope questions bottomed out at 0.803. 0.6 sits comfortably in the middle of that gap, so I kept the default rather than moving it.
 
-<!-- Milestone 4. -->
+
 
 | Question | In corpus? | Best distance |
 |---|---|---|
@@ -106,6 +106,7 @@ The housing lottery is not entirely random; rising sophomores get a number drawn
 **1.**
 
 **2.**
+
 
 ---
 
