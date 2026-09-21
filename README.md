@@ -77,17 +77,27 @@ The bad: known damp problem on the ground floor; two rooms were taken offline in
 
 <!-- Milestone 4. -->
 
-**Question:**
+**Question:** is the housing lottery random?
 
 **Answer:**
-
-**My relevance cutoff:**
+The housing lottery is not entirely random; rising sophomores get a number drawn at random, but juniors and seniors are ordered by accumulated credit hours first, using random selection only as a tie-breaker (admin_housing_lottery.txt).
+**My relevance cutoff:** 0.6 (the starter's default). I ran all 5 of my test questions and all 5 OUT_OF_SCOPE questions and found a large, clean gap: my in-scope questions topped out at 0.363, and my out-of-scope questions bottomed out at 0.803. 0.6 sits comfortably in the middle of that gap, so I kept the default rather than moving it.
 
 <!-- Milestone 4. -->
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| Is the housing lottery actually random? | Yes | 0.254 |
+| What's the noise situation like in Morrow House? | Yes | 0.245 |
+| How many unit tests are there in BIOL 160? | Yes | 0.260 |
+| If I have dining dollars left over in May, do I keep them for next fall? | Yes | 0.317 |
+| Who do I talk to first if I want to appeal a grade? | Yes | 0.363 |
+| What is the capital of Mongolia? | No | 0.825 |
+| How do I change the oil in a diesel engine? | No | 0.923 |
+| Who won the 1994 World Cup? | No | 0.874 |
+| What is the recommended dosage of ibuprofen for a headache? | No | 0.803 |
+| How do I write a for loop in Rust? | No | 0.877 |
+
 
 ## How I Used AI
 
