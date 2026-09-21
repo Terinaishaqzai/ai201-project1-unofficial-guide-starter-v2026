@@ -101,11 +101,10 @@ The housing lottery is not entirely random; rising sophomores get a number drawn
 
 ## How I Used AI
 
-<!-- Milestone 5. -->
 
-**1.**
+**1.** I asked Claude to write a paragraph-based chunker to replace the starter's fixed-size one, since my documents bundle several sub-topics per file. The first version merged short paragraphs backward into the previous one, but that missed short leading title lines with no previous chunk to merge into — my index run showed a 10-character chunk as a result. I pointed this out, and Claude rewrote the merge logic to accumulate forward instead. Re-running the index confirmed the shortest chunk became exactly 100 characters.
 
-**2.**
+**2.** I asked Claude to help me draft my 5 test questions and 2 extra acceptance criteria based on documents I'd read from my corpus. When reviewing sample chunks, Claude flagged that one of my 5 sample chunks ("Also worth saying: one register...") assumed context from an earlier paragraph in the same file. Rather than swapping it for a cleaner example, I decided to keep it and note the limitation directly in my README, since an honest imperfect example felt more useful than a cherry-picked perfect one.
 
 
 ---
