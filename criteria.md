@@ -70,9 +70,15 @@ in at least 4 of 5 tries.
           in my corpus turned out to be a heading with no content under it." -->
 
 
+At least 4 of 5 sampled chunks read as a complete thought, with no chunk
+shorter than 100 characters or longer than 600 characters.
 
 **Why this target:**
-
+My documents are short, self-contained posts (average 317 characters,
+ranging from 178 to 549 in my Milestone 1 index run). A chunk under
+~100 characters is likely a meaningless fragment; a chunk over ~600
+would mean two unrelated posts got blended together. This range reflects
+what a genuinely complete thought looks like in this specific corpus.
 
 
 ---
@@ -87,10 +93,15 @@ in at least 4 of 5 tries.
      present — anything, as long as it names a number or an observable
      outcome. -->
 
-
+At least 3 of my 5 test questions retrieve their known source document
+as the #1 ranked chunk, not merely somewhere in the top-k results.
 
 **Why this target:**
-
+Getting a source into the general neighborhood is different from
+actually surfacing the single best match first. For a corpus this
+small and specific — where each fact usually lives in exactly one
+document — I want my top result to usually be the right one, not
+just present somewhere in the list.
 
 
 ---
