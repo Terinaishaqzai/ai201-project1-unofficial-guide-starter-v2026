@@ -107,21 +107,48 @@ The housing lottery is not entirely random; rising sophomores get a number drawn
 **2.** I asked Claude to help me draft my 5 test questions and 2 extra acceptance criteria based on documents I'd read from my corpus. When reviewing sample chunks, Claude flagged that one of my 5 sample chunks ("Also worth saying: one register...") assumed context from an earlier paragraph in the same file. Rather than swapping it for a cleaner example, I decided to keep it and note the limitation directly in my README, since an honest imperfect example felt more useful than a cherry-picked perfect one.
 
 
----
-
 # Unit 2
+
+<!-- These sections get ADDED to what's already above. Don't delete or rewrite
+     unit 1 — the point is that someone can see what you said before you knew
+     how it went. -->
 
 ## Run Log — Before
 
+<!-- Your five criteria, three runs each. `python run_eval.py --label before`
+     runs the questions, puts the OUT_OF_SCOPE ones through the gate, and
+     writes it all into results/ for you. Targets come from criteria.md; the
+     verdict column is your call.
+
+     Criterion 3 is measured in one deterministic pass rather than three, so
+     the same number goes in all three run columns. That's correct, not lazy.
+
+     Milestone 1. -->
+
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Sampled chunks are complete thoughts, 100–600 characters | 4 of 5 | 4/5 | 4/5 | 4/5 | MET |
+| 5. Known source is the #1 ranked chunk | 3 of 5 | 5/5 | 5/5 | 5/5 | MET |
+
+The three answers per question are saved in `results/run_2026-09-24_1537_before.md`. Retrieval and chunking gave the same results across runs. The gate was tested once because it is deterministic, so its result appears in all three columns.
+
+<!-- Underneath, paste the REAL output for each criterion from one of your
+     runs — the actual text your system produced, not a description of it.
+     Name the file and function that produced it. -->
 
 ## Verdicts
+
+<!-- MET or MISSED for each of the five, against the target you wrote last
+     unit — not a new one. Plus a sentence on how you decided. That sentence
+     matters most where it was close.
+
+     If your target said 4 of 5 and your runs came out 4, 3, 4, that's a MISS.
+     The target has to hold, not show up occasionally.
+
+     Milestone 2. -->
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
@@ -133,13 +160,37 @@ The housing lottery is not entirely random; rising sophomores get a number drawn
 
 ## Diagnoses
 
+<!-- For each miss: which stage caused it, and how. The stage alone isn't
+     enough — you need the mechanism.
+
+     Not a diagnosis: "Question 3 didn't work."
+     A diagnosis:     "Question 3 asks about laundry costs. The answer is in
+                       one sentence that got split across two chunks, so
+                       neither chunk on its own contains it."
+
+     The five stages: loading → chunking → embedding → retrieval → generation.
+
+     Look for a pattern. If three misses all ask about numbers, that's one
+     problem, not three.
+
+     Missed nothing? Say so, then say honestly whether your targets were set
+     low, and which one you'd tighten and to what.
+
+     Milestone 3. -->
+
 ## The Improvement
 
 **What I changed:**
 
 **Why I picked it:**
 
+<!-- Connect it to a specific diagnosis above in one sentence. If you can't,
+     you picked a fix because it sounded impressive. -->
+
 ### Run Log — After
+
+<!-- Same format, same five criteria, three runs each.
+     `python run_eval.py --label after` -->
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
@@ -151,6 +202,26 @@ The housing lottery is not entirely random; rising sophomores get a number drawn
 
 **Did it help?**
 
+<!-- Say plainly whether it did, and how you know. If it made things worse,
+     say that — a change that backfired, honestly reported, earns full credit
+     and is more interesting than one that worked. What matters is that you can
+     tell.
+
+     Milestone 4. -->
+
 ## What's Still Broken
 
+<!-- For each criterion still missed after your fix: what you'd do about it,
+     and why you stopped where you did.
+
+     "I ran out of time" is fine if it's true. Pretending nothing is left is
+     not.
+
+     Milestone 5. -->
+
 ## What I'd Do Differently
+
+<!-- Knowing what you know now — which of your five criteria would you write
+     differently, and why?
+
+     Milestone 5. -->
