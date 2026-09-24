@@ -177,6 +177,10 @@ The three answers per question are saved in `results/run_2026-09-24_1537_before.
      low, and which one you'd tighten and to what.
 
      Milestone 3. -->
+All five criteria met their targets. My targets were fairly safe: criterion 4 only required 4 of 5 sampled chunks to stand alone, and that is exactly what I got. I would tighten it to 5 of 5 in a future test.
+
+The remaining weakness is in chunking. The Verrill Street Grill chunk starts “Also worth saying,” referring to an earlier paragraph. My chunker split at the paragraph break, leaving that chunk without its full context.
+
 
 ## The Improvement
 
