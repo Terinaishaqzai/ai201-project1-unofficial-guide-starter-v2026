@@ -184,9 +184,9 @@ The remaining weakness is in chunking. The Verrill Street Grill chunk starts “
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I updated `chunker.py::split_documents` to keep follow-up paragraphs with the preceding chunk when the combined text is at most 600 characters. The Verrill Street Grill follow-up now appears with the earlier paragraph instead of alone.
 
-**Why I picked it:**
+**Why I picked it:** My diagnosis found that paragraph splitting removed the context needed to understand “Also worth saying.”
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
