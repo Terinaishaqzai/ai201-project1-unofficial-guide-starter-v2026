@@ -107,7 +107,18 @@ def split_documents(documents: list[Document]) -> list[Chunk]:
                 merged[-1] = merged[-1] + "\n\n" + buffer
             else:
                 merged.append(buffer)
+        # Keep follow-up paragraphs with the context they refer to.
+        with_context: list[str] = []
+        for text in merged:
+            is_follow_up = text.lower().startswith(
+                ("also worth saying:", "another thing:", "one more thing:")
+            )
+            if is_follow_up and with_context and len(with_context[-1] + "\n\n" + text) <= 600:
+                with_context[-1] += "\n\n" + text
+            else:
+                with_context.append(text)
 
+        merged = with_context
         for i, text in enumerate(merged):
             chunks.append(
                 Chunk(
