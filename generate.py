@@ -254,11 +254,13 @@ def generate(prompt: str, system: str | None = None, cache: bool = True) -> str:
                 or "resource" in message and "exhaust" in message
                 or "rate" in message and "limit" in message
             )
-            if not rate_limited:
+            overloaded = "503" in message or "unavailable" in message
+            if not (rate_limited or overloaded):
                 raise
-            backoff = 2 ** attempt
+            backoff = (10 if overloaded else 1) * 2 ** attempt
+            reason = "model overloaded (503)" if overloaded else "rate limit"
             print(
-                f"  [rate limit] service pushed back. Retrying in {backoff}s "
+                f"  [{reason}] service pushed back. Retrying in {backoff}s "
                 f"(attempt {attempt + 1} of {config.MAX_RETRIES}).",
                 file=sys.stderr,
                 flush=True,
@@ -266,10 +268,9 @@ def generate(prompt: str, system: str | None = None, cache: bool = True) -> str:
             time.sleep(backoff)
 
     raise RuntimeError(
-        f"Still rate limited after {config.MAX_RETRIES} attempts. Wait a "
-        f"minute and try again — your key is fine.\nLast error: {last_error}"
+        f"Service still refusing after {config.MAX_RETRIES} attempts. Wait a "
+        f"few minutes and try again — your key is fine.\nLast error: {last_error}"
     )
-
 
 # ─── The grounded answer ─────────────────────────────────────────────────────
 
